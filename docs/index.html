@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Tree Genealogy System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+            padding: 40px;
+        }
+        
+        h1 {
+            color: #333;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        .subtitle {
+            color: #666;
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+        
+        .diagram-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: auto;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 8px;
+            border: 1px solid #eee;
+        }
+        
+        .diagram-container svg {
+            max-width: 100%;
+            height: auto;
+        }
+        
+        .info {
+            margin-top: 30px;
+            padding: 20px;
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            border-radius: 4px;
+            color: #333;
+            font-size: 14px;
+        }
+        
+        .info h3 {
+            margin-bottom: 10px;
+            color: #667eea;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>👨‍👩‍👧‍👦 Family Tree Genealogy System</h1>
+        <p class="subtitle">Interactive family relationships visualization</p>
+        
+        <div class="diagram-container" id="diagram-holder">
+            <!-- Diagram will be loaded here -->
+            <p style="color: #999;">Loading diagram...</p>
+        </div>
+        
+        <div class="info">
+            <h3>📋 About this Family Tree</h3>
+            <p>This interactive family tree displays genealogical relationships and connections. The diagram is automatically generated from the family data and updated whenever changes are made.</p>
+        </div>
+    </div>
+    
+    <script>
+        // Load SVG diagram
+        fetch('family.svg')
+            .then(response => response.text())
+            .then(svg => {
+                document.getElementById('diagram-holder').innerHTML = svg;
+            })
+            .catch(error => {
+                console.error('Error loading diagram:', error);
+                document.getElementById('diagram-holder').innerHTML = 
+                    '<p style="color: #e74c3c;">Error loading family tree diagram</p>';
+            });
+    </script>
+</body>
+</html>
