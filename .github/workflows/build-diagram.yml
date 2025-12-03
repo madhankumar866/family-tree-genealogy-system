@@ -18,8 +18,16 @@ jobs:
           node-version: '20'
       - name: Install mermaid-cli
         run: npm install -g @mermaid-js/mermaid-cli
+      - name: Create puppeteer config
+        run: |
+          cat > /tmp/puppeteer-config.json << 'EOF'
+          {
+            "headless": true,
+            "args": ["--no-sandbox", "--disable-setuid-sandbox"]
+          }
+          EOF
       - name: Render diagram
-        run: mmdc -i docs/family.mmd -o docs/family.svg
+        run: mmdc -i docs/family.mmd -o docs/family.svg -p /tmp/puppeteer-config.json
       - name: Commit and push diagram
         run: |
           git config user.name "github-actions[bot]"
