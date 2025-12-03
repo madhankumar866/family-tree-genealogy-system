@@ -1,0 +1,20 @@
+flowchart TB
+  subgraph G0["Grandparents"]
+    GP1["Grandpa Ravi"]
+    GP2["Grandma Latha"]
+  end
+
+  subgraph G1["Parents"]
+    P1["Madhan Kumar\n(b.1985)"]
+    P2["Meena Kumar\n(b.1987)"]
+  end
+
+  subgraph G2["Children"]
+    C1["Aarav\n(b.2012)"]
+  end
+
+  GP1 --> P1
+  GP2 --> P1
+  P1 --> C1
+  P2 --> C1
+  P1 --- P2

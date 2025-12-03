@@ -1,0 +1,15 @@
+{
+  "meta": {
+    "title": "sabapathi Family Tree",
+    "maintainer": "Madhan Kumar",
+    "created": "2025-12-01"
+  },
+  "people": [
+    {"id": "p1", "name": "Madhan Kumar", "sex": "M", "birth":"1996-05-25", "parents": ["p4","p5"], "children":["p3"]},
+    {"id": "p2", "name": "Meena Kumar", "sex": "F", "birth":"1987-03-15", "children":["p3"]},
+    {"id": "p3", "name": "Aarav Kumar", "sex": "M", "birth":"2012-09-12"}
+  ],
+  "families": [
+    {"id":"f1","husband":"p1","wife":"p2","children":["p3"],"married":"2010-06-10"}
+  ]
+}

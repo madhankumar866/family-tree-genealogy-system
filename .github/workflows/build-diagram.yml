@@ -1,0 +1,29 @@
+name: Build Mermaid Diagram
+on:
+  push:
+    paths:
+      - 'docs/family.mmd'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install mermaid-cli
+        run: npm install -g @mermaid-js/mermaid-cli
+      - name: Render diagram
+        run: mmdc -i docs/family.mmd -o docs/family.svg
+      - name: Commit and push diagram
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "actions@github.com"
+          git add docs/family.svg
+          git commit -m "Auto: rebuild diagram" || echo "no changes"
+          git push
