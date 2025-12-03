@@ -1,18 +1,21 @@
 flowchart TB
   subgraph G0["Great-Grandparents"]
-    GGF["Pachaiyappan Nayakar"]
+    GGF["Pachaiyappan Nayakar<br/>(Paternal)"]
+    MGM["Manikmamal<br/>(Maternal)"]
   end
 
   subgraph G1["Grandparents"]
-    GP1["Ramalingam<br/>(Last Child of Pachaiyappan)"]
+    GP1["Ramalingam<br/>(Paternal Grandfather)<br/>Last Child of Pachaiyappan"]
     AS1["Eldest Sister<br/>(Sabapathi's Elder Sister)"]
     AS2["Second Sister<br/>(Sabapathi's Elder Sister)"]
     AS3["Third Sister<br/>(Sabapathi's Elder Sister)"]
+    MU1["Moorty<br/>(Geetha's Elder Brother)"]
+    MU2["Hemanathan<br/>(Geetha's Younger Brother)"]
   end
 
   subgraph G2["Parents"]
     P1["Sabapathi<br/>(Father)<br/>Youngest of 4 Siblings"]
-    P2["Geetha<br/>(Mother)"]
+    P2["Geetha<br/>(Mother)<br/>Middle Child"]
   end
 
   subgraph G3["Your Generation"]
@@ -25,6 +28,10 @@ flowchart TB
   GGF --> AS1
   GGF --> AS2
   GGF --> AS3
+  
+  MGM --> MU1
+  MGM --> P2
+  MGM --> MU2
   
   GP1 --> P1
   P2 --> P1
@@ -43,3 +50,5 @@ flowchart TB
   GP1 --- AS1
   GP1 --- AS2
   GP1 --- AS3
+  MU1 --- P2
+  P2 --- MU2

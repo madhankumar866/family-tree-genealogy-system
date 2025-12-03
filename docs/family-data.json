@@ -3,7 +3,7 @@
     {
       "id": "pachaiyappan_nayakar",
       "name": "Pachaiyappan Nayakar",
-      "relation": "Great-Grandfather",
+      "relation": "Great-Grandfather (Paternal)",
       "dateOfBirth": "1920-05-12",
       "profession": "Aristocrat",
       "education": "Traditional Education",
@@ -11,9 +11,19 @@
       "image": "👴"
     },
     {
+      "id": "manikmamal",
+      "name": "Manikmamal",
+      "relation": "Grandmother (Maternal)",
+      "dateOfBirth": "1935-03-25",
+      "profession": "Homemaker",
+      "education": "Primary Education",
+      "bio": "A caring grandmother who raised three wonderful children with love and dedication.",
+      "image": "👵"
+    },
+    {
       "id": "ramalingam",
       "name": "Ramalingam",
-      "relation": "Grandfather (Last Child)",
+      "relation": "Grandfather (Paternal)",
       "dateOfBirth": "1940-08-20",
       "profession": "Merchant",
       "education": "Secondary Education",
@@ -51,6 +61,36 @@
       "image": "👵"
     },
     {
+      "id": "moorty",
+      "name": "Moorty",
+      "relation": "Mother's Elder Brother",
+      "dateOfBirth": "1958-05-18",
+      "profession": "Accountant",
+      "education": "Bachelor's in Commerce",
+      "bio": "The elder brother of Geetha, Moorty is a respected accountant known for his integrity and support to the family.",
+      "image": "👨‍💼"
+    },
+    {
+      "id": "geetha",
+      "name": "Geetha",
+      "relation": "Mother (Middle Child)",
+      "dateOfBirth": "1962-06-20",
+      "profession": "Homemaker",
+      "education": "Bachelor's Degree",
+      "bio": "A nurturing mother devoted to family care and household management. Middle child of Manikmamal's three children.",
+      "image": "👩‍🍳"
+    },
+    {
+      "id": "hemanathan",
+      "name": "Hemanathan",
+      "relation": "Mother's Younger Brother",
+      "dateOfBirth": "1965-11-30",
+      "profession": "Teacher",
+      "education": "Bachelor's in Education",
+      "bio": "The youngest sibling, Hemanathan is a dedicated teacher passionate about student development and community education.",
+      "image": "👨‍🏫"
+    },
+    {
       "id": "sabapathi",
       "name": "Sabapathi",
       "relation": "Father (Youngest of 4 Siblings)",
@@ -59,16 +99,6 @@
       "education": "High School",
       "bio": "A dedicated entrepreneur with years of experience in business management and community development.",
       "image": "👨‍💼"
-    },
-    {
-      "id": "geetha",
-      "name": "Geetha",
-      "relation": "Mother",
-      "dateOfBirth": "1962-06-20",
-      "profession": "Homemaker",
-      "education": "Bachelor's Degree",
-      "bio": "A nurturing mother devoted to family care and household management.",
-      "image": "👩‍🍳"
     },
     {
       "id": "shobana_rani",
