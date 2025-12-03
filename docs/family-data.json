@@ -1,9 +1,59 @@
 {
   "familyMembers": [
     {
+      "id": "pachaiyappan_nayakar",
+      "name": "Pachaiyappan Nayakar",
+      "relation": "Great-Grandfather",
+      "dateOfBirth": "1920-05-12",
+      "profession": "Aristocrat",
+      "education": "Traditional Education",
+      "bio": "A prominent figure of his time, Pachaiyappan Nayakar was known for his wisdom and leadership in the community.",
+      "image": "👴"
+    },
+    {
+      "id": "ramalingam",
+      "name": "Ramalingam",
+      "relation": "Grandfather (Last Child)",
+      "dateOfBirth": "1940-08-20",
+      "profession": "Merchant",
+      "education": "Secondary Education",
+      "bio": "The youngest of four siblings, Ramalingam carried forward the family legacy with dedication and integrity.",
+      "image": "👴"
+    },
+    {
+      "id": "sabapathi_sister_1",
+      "name": "Eldest Sister",
+      "relation": "Father's Elder Sister",
+      "dateOfBirth": "1935-02-10",
+      "profession": "Homemaker",
+      "education": "Primary Education",
+      "bio": "The eldest of the four siblings born to Pachaiyappan Nayakar, she was a pillar of the family.",
+      "image": "👵"
+    },
+    {
+      "id": "sabapathi_sister_2",
+      "name": "Second Sister",
+      "relation": "Father's Elder Sister",
+      "dateOfBirth": "1937-10-28",
+      "profession": "Homemaker",
+      "education": "Primary Education",
+      "bio": "The second eldest sibling, known for her caring nature and strong family values.",
+      "image": "👵"
+    },
+    {
+      "id": "sabapathi_sister_3",
+      "name": "Third Sister",
+      "relation": "Father's Elder Sister",
+      "dateOfBirth": "1939-04-15",
+      "profession": "Homemaker",
+      "education": "Primary Education",
+      "bio": "The third sibling, remembered for her wisdom and devotion to family traditions.",
+      "image": "👵"
+    },
+    {
       "id": "sabapathi",
       "name": "Sabapathi",
-      "relation": "Father",
+      "relation": "Father (Youngest of 4 Siblings)",
       "dateOfBirth": "1960-01-15",
       "profession": "Business Owner",
       "education": "High School",
