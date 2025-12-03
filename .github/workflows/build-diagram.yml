@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -33,5 +35,4 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "actions@github.com"
           git add docs/family.svg
-          git commit -m "Auto: rebuild diagram" || echo "no changes"
-          git push
+          git commit -m "Auto: rebuild diagram" && git push || echo "no changes to push"
