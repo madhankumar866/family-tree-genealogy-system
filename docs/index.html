@@ -49,11 +49,178 @@
             background: #f9f9f9;
             border-radius: 8px;
             border: 1px solid #eee;
+            margin-bottom: 30px;
         }
         
         .diagram-container svg {
             max-width: 100%;
             height: auto;
+        }
+        
+        .family-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .member-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .member-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .member-icon {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+        
+        .member-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .member-relation {
+            font-size: 12px;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+        
+        .member-profession {
+            font-size: 13px;
+            opacity: 0.8;
+            margin-bottom: 10px;
+        }
+        
+        .click-hint {
+            font-size: 11px;
+            opacity: 0.7;
+            font-style: italic;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.3s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            animation: slideDown 0.3s ease;
+        }
+        
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        
+        .close-btn:hover {
+            color: #333;
+        }
+        
+        .portfolio-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 20px;
+        }
+        
+        .portfolio-icon {
+            font-size: 60px;
+        }
+        
+        .portfolio-title {
+            flex: 1;
+        }
+        
+        .portfolio-title h2 {
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .portfolio-title p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .portfolio-section {
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .portfolio-section:last-child {
+            border-bottom: none;
+        }
+        
+        .portfolio-section h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+        
+        .portfolio-section p {
+            color: #555;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+        
+        .portfolio-detail {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            color: #555;
+            font-size: 14px;
+        }
+        
+        .detail-label {
+            font-weight: 600;
+            color: #333;
         }
         
         .info {
@@ -79,26 +246,61 @@
             h1 {
                 font-size: 24px;
             }
+            
+            .family-members {
+                grid-template-columns: 1fr;
+            }
+            
+            .portfolio-header {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>👨‍👩‍👧‍👦 Family Tree Genealogy System</h1>
-        <p class="subtitle">Interactive family relationships visualization</p>
+        <p class="subtitle">Interactive family relationships visualization - Click on any name to view their portfolio</p>
         
         <div class="diagram-container" id="diagram-holder">
-            <!-- Diagram will be loaded here -->
             <p style="color: #999;">Loading diagram...</p>
+        </div>
+        
+        <h2 style="color: #333; margin-bottom: 20px;">Family Members</h2>
+        <div class="family-members" id="family-members-container">
+            <!-- Family member cards will be loaded here -->
         </div>
         
         <div class="info">
             <h3>📋 About this Family Tree</h3>
-            <p>This interactive family tree displays genealogical relationships and connections. The diagram is automatically generated from the family data and updated whenever changes are made.</p>
+            <p>This interactive family tree displays genealogical relationships and connections. Click on any family member's name to view their detailed portfolio including date of birth, profession, and education. The diagram is automatically generated from the family data and updated whenever changes are made.</p>
+        </div>
+    </div>
+    
+    <!-- Portfolio Modal -->
+    <div id="portfolioModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div id="portfolio-content">
+                <!-- Portfolio content will be inserted here -->
+            </div>
         </div>
     </div>
     
     <script>
+        let familyData = [];
+        
+        // Load family data from JSON
+        fetch('family-data.json')
+            .then(response => response.json())
+            .then(data => {
+                familyData = data.familyMembers;
+                renderFamilyMembers();
+                setupModalEvents();
+            })
+            .catch(error => console.error('Error loading family data:', error));
+        
         // Load SVG diagram
         fetch('family.svg')
             .then(response => response.text())
@@ -110,6 +312,91 @@
                 document.getElementById('diagram-holder').innerHTML = 
                     '<p style="color: #e74c3c;">Error loading family tree diagram</p>';
             });
+        
+        // Render family member cards
+        function renderFamilyMembers() {
+            const container = document.getElementById('family-members-container');
+            container.innerHTML = familyData.map(member => `
+                <div class="member-card" onclick="showPortfolio('${member.id}')">
+                    <div class="member-icon">${member.image}</div>
+                    <div class="member-name">${member.name}</div>
+                    <div class="member-relation">${member.relation}</div>
+                    <div class="member-profession">${member.profession}</div>
+                    <div class="click-hint">👆 Click to view portfolio</div>
+                </div>
+            `).join('');
+        }
+        
+        // Show portfolio modal
+        function showPortfolio(memberId) {
+            const member = familyData.find(m => m.id === memberId);
+            if (!member) return;
+            
+            const dob = new Date(member.dateOfBirth);
+            const dobFormatted = dob.toLocaleDateString('en-US', { 
+                year: 'numeric', 
+                month: 'long', 
+                day: 'numeric' 
+            });
+            
+            const portfolioHTML = `
+                <div class="portfolio-header">
+                    <div class="portfolio-icon">${member.image}</div>
+                    <div class="portfolio-title">
+                        <h2>${member.name}</h2>
+                        <p>${member.relation}</p>
+                    </div>
+                </div>
+                
+                <div class="portfolio-section">
+                    <h3>📅 Personal Information</h3>
+                    <div class="portfolio-detail">
+                        <span class="detail-label">Date of Birth:</span>
+                        <span>${dobFormatted}</span>
+                    </div>
+                </div>
+                
+                <div class="portfolio-section">
+                    <h3>💼 Professional Information</h3>
+                    <div class="portfolio-detail">
+                        <span class="detail-label">Profession:</span>
+                        <span>${member.profession}</span>
+                    </div>
+                </div>
+                
+                <div class="portfolio-section">
+                    <h3>🎓 Education</h3>
+                    <div class="portfolio-detail">
+                        <span class="detail-label">Qualification:</span>
+                        <span>${member.education}</span>
+                    </div>
+                </div>
+                
+                <div class="portfolio-section">
+                    <h3>📝 About</h3>
+                    <p>${member.bio}</p>
+                </div>
+            `;
+            
+            document.getElementById('portfolio-content').innerHTML = portfolioHTML;
+            document.getElementById('portfolioModal').style.display = 'block';
+        }
+        
+        // Setup modal close events
+        function setupModalEvents() {
+            const modal = document.getElementById('portfolioModal');
+            const closeBtn = document.querySelector('.close-btn');
+            
+            closeBtn.onclick = () => {
+                modal.style.display = 'none';
+            };
+            
+            window.onclick = (event) => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            };
+        }
     </script>
 </body>
 </html>

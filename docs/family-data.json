@@ -1,0 +1,54 @@
+{
+  "familyMembers": [
+    {
+      "id": "sabapathi",
+      "name": "Sabapathi",
+      "relation": "Father",
+      "dateOfBirth": "1960-01-15",
+      "profession": "Business Owner",
+      "education": "High School",
+      "bio": "A dedicated entrepreneur with years of experience in business management and community development.",
+      "image": "👨‍💼"
+    },
+    {
+      "id": "geetha",
+      "name": "Geetha",
+      "relation": "Mother",
+      "dateOfBirth": "1962-06-20",
+      "profession": "Homemaker",
+      "education": "Bachelor's Degree",
+      "bio": "A nurturing mother devoted to family care and household management.",
+      "image": "👩‍🍳"
+    },
+    {
+      "id": "shobana_rani",
+      "name": "Shobana Rani",
+      "relation": "Sister (1st Born)",
+      "dateOfBirth": "1985-03-10",
+      "profession": "Teacher",
+      "education": "Master's in Education",
+      "bio": "An accomplished educator passionate about shaping young minds and community education.",
+      "image": "👩‍🏫"
+    },
+    {
+      "id": "sundar",
+      "name": "Sundar",
+      "relation": "Brother (2nd Born)",
+      "dateOfBirth": "1987-07-22",
+      "profession": "Engineer",
+      "education": "Bachelor's in Engineering",
+      "bio": "A skilled software engineer with expertise in web development and cloud technologies.",
+      "image": "👨‍💻"
+    },
+    {
+      "id": "madhan_kumar",
+      "name": "Madhan Kumar",
+      "relation": "You (3rd Born)",
+      "dateOfBirth": "1990-11-05",
+      "profession": "Developer",
+      "education": "Bachelor's in Computer Science",
+      "bio": "A passionate full-stack developer creating innovative solutions and building family projects.",
+      "image": "👨‍💻"
+    }
+  ]
+}
